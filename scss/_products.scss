@@ -1,0 +1,39 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+
+section {
+  padding: $spacing-xxl 0;
+}
+
+.products {
+  margin-top: $spacing-xl;
+  display: grid;
+  grid-template-columns: repeat($grid-columns-desktop, 32.66%);
+  column-gap: $grid-gap;
+  row-gap: $grid-row-gap;
+  width: 100%;
+
+  @include tablet {
+    grid-template-columns: repeat($grid-columns-tablet, 48.5%);
+    column-gap: 3%;
+  }
+
+  @include mobile {
+    display: block;
+  }
+}
+
+.product-item {
+  img {
+    width: 100%;
+    border-radius: $border-radius-md;
+  }
+
+  @include mobile {
+    margin-bottom: $spacing-lg;
+  }
+}
+
+.product-button {
+  @include button-style($secondary-color, $secondary-hover);
+}

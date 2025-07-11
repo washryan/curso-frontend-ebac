@@ -1,0 +1,44 @@
+@use 'variables' as *;
+
+// flexbox
+@mixin flex-center {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+// reset básico
+@mixin reset {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+// botões
+@mixin button-style($bg-color, $hover-color, $text-color: #fff) {
+  display: block;
+  background-color: $bg-color;
+  color: $text-color;
+  text-align: center;
+  padding: $spacing-xs 0;
+  border-radius: $border-radius-sm;
+  margin-top: $spacing-xs;
+  text-decoration: none;
+  
+  &:hover {
+    background-color: $hover-color;
+  }
+}
+
+// media queries
+@mixin tablet {
+  @media screen and (max-width: $tablet) {
+    @content;
+  }
+}
+
+@mixin mobile {
+  @media screen and (max-width: $mobile) {
+    @content;
+  }
+}
