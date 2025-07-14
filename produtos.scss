@@ -1,0 +1,41 @@
+.produtos {
+  max-width: 640px;
+  width: 100%;
+  margin: 56px auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+
+  &__produto {
+    background: #fff;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    padding: 12px;
+    border-radius: 8px;
+    transition: transform 0.2s ease;
+
+    &:hover {
+      transform: translateY(-4px);
+    }
+
+    &--em-destaque {
+      border: 2px solid gold;
+      background-color: #ffff42;
+    }
+
+    &-imagem {
+      width: 100%;
+      border-radius: 4px;
+    }
+
+    &-nome {
+      font-size: 1.2em;
+      margin: 8px 0;
+      color: #333;
+    }
+
+    &-descricao {
+      color: #777;
+      font-size: 0.9em;
+    }
+  }
+}
