@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <title>OO em JavaScript - Exercício</title>
+  <style>
+    body { font-family: system-ui, Arial; margin: 24px; background:#f5f7fb; color:#111; }
+    .card { background:#fff; padding:16px; border-radius:8px; box-shadow:0 6px 18px rgba(10,20,40,0.06); max-width:760px; margin:auto; }
+    h1 { margin-top:0; }
+    pre { background:#0f1724; color:#dff; padding:12px; border-radius:6px; overflow:auto; }
+    ul { list-style:none; padding-left:0; }
+    li { padding:8px 0; border-bottom:1px dashed #eee; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>Exercício OO em JavaScript</h1>
+    <p>Abstração: <strong>Veiculo</strong>. Herdeiras: <strong>Carro</strong>, <strong>Motocicleta</strong>, <strong>Aviao</strong>.</p>
+
+    <h3>Instâncias criadas</h3>
+    <ul id="instances"></ul>
+
+    <h3>Polimorfismo — tempo 0 → 100 (s)</h3>
+    <div id="polymorphism"></div>
+
+    <h3>Console de demonstração</h3>
+    <pre id="console"></pre>
+  </div>
+
+  <script src="oo.js"></script>
+  <script>
+    const items = [OO.carro1, OO.moto1, OO.aviao1];
+
+    items.forEach(v => {
+      const li = document.createElement('li');
+      li.textContent = `${v.constructor.name} — ${v.marca} ${v.modelo} (vel=${v.velocidade} km/h)`;
+      document.getElementById('instances').appendChild(li);
+    });
+
+    document.getElementById('polymorphism').innerHTML = items
+      .map(v => `<div>${v.constructor.name} ${v.marca} ${v.modelo} → ${v.tempoAte100()} s</div>`)
+      .join('');
+
+    let out = '';
+    out += 'Acelerando o carro em +30 km/h:\n';
+    OO.carro1.acelerar(30); out += `-> ${OO.carro1.toString()}\n`;
+
+    out += 'Freando a moto em 50 km/h:\n';
+    OO.moto1.frear(50); out += `-> ${OO.moto1.toString()}\n`;
+
+    out += 'Verificando encapsulamento (tentativa de velocidade inválida):\n';
+    try {
+      OO.carro1.velocidade = -10;
+    } catch (err) {
+      out += '-> Erro capturado: ' + err.message + '\n';
+    }
+
+    document.getElementById('console').textContent = out;
+  </script>
+</body>
+</html>
