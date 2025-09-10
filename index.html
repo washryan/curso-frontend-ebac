@@ -1,38 +1,50 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Meu Github</title>
-    <link rel="stylesheet" href="main.css">
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Meu Github</title>
+  <link rel="stylesheet" href="main.css" />
 </head>
 <body>
-    <header>
-        <div class="container">
-            <img class="profile-avatar" src="https://via.placeholder.com/180x180" alt=".">
-            <h1 class="profile-name">Washington Ryan</h1>
-            <h2 class="profile-username">@washryan</h2>
-            <ul class="numbers">
-                <li class="numbers-item">
-                    <h4>Repositórios</h4>
-                    5
-                </li>
-                <li class="numbers-item">
-                    <h4>Seguidores</h4>
-                    5
-                </li>
-                <li class="numbers-item">
-                    <h4>Seguindo</h4>
-                    5
-                </li>
-            </ul>
-            <a href="https://github.com/washryan" class="profile-link">Ver no Github</a>
-            <button id="btnCarregar">Carregar Usuários</button>
-            <ul id="listaUsuarios"></ul>
+  <header>
+    <div class="container">
+      <img id="profile-avatar" class="profile-avatar" src="https://via.placeholder.com/180x180" alt="Avatar">
+      <h1 id="profile-name" class="profile-name">Washington Ryan</h1>
+      <h2 id="profile-username" class="profile-username">@washryan</h2>
 
-        </div>
-    </header>
-    <script src="script.js"></script>
+      <ul class="numbers">
+        <li class="numbers-item">
+          <h4>Repositórios</h4>
+          <span id="repo-count">0</span>
+        </li>
+        <li class="numbers-item">
+          <h4>Seguidores</h4>
+          <span id="followers-count">0</span>
+        </li>
+        <li class="numbers-item">
+          <h4>Seguindo</h4>
+          <span id="following-count">0</span>
+        </li>
+      </ul>
+
+      <a id="profile-link" class="profile-link" href="https://github.com/washryan" target="_blank" rel="noopener noreferrer">Ver no Github</a>
+
+      <div style="margin-top:16px;">
+        <button id="btnCarregar" class="btn" aria-live="polite">
+          <span class="label">Carregar Perfil GitHub</span>
+          <span class="spinner" aria-hidden="true"></span>
+        </button>
+      </div>
+
+      <h3 style="margin-top:20px">Repositórios recentes</h3>
+      <ul id="repo-list"></ul>
+
+      <div id="error" style="color:#ffdddd; margin-top:12px;"></div>
+    </div>
+  </header>
+
+  <script src="script.js"></script>
 </body>
 </html>

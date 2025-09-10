@@ -68,19 +68,26 @@ header .container {
     font-size: .3em;
 }
 
-button, a {
-  display: inline-block;
-  padding: 0.6rem 1.1rem;
+/* spinner + loading button */
+.btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: .6rem;
+  padding: 0.55rem 1rem;
   font-size: 1rem;
-  font-weight: 600;
-  color: #ffffff;
-  background: linear-gradient(180deg,#007bff,#0062d6);
+  color: #fff;
+  background: #0d6efd;
   border: none;
   border-radius: 8px;
   cursor: pointer;
-  box-shadow: 0 4px 10px rgba(2,6,23,0.12);
-  transition: transform .08s ease, box-shadow .12s ease, opacity .12s ease;
-  user-select: none;
 }
 
-button:hover, a:hover { transform: translateY(-2px); box-shadow: 0 8px 18px rgba(2,6,23,0.12); }
+.btn .spinner { display: none; width: 18px; height: 18px; border: 2px solid rgba(255,255,255,0.25); border-top-color: #fff; border-radius:50%; animation: spin .8s linear infinite; }
+.btn.loading { pointer-events: none; opacity: 0.9; }
+.btn.loading .spinner { display: inline-block; }
+
+@keyframes spin { to { transform: rotate(360deg); } }
+
+#repo-list { margin-top: 12px; padding-left: 16px; }
+#repo-list li { margin: 8px 0; font-size: 0.95rem; }
