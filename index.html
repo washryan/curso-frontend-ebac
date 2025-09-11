@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <title>Exercício ES6 - Filtrar Alunos</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding:20px; }
+    pre { background:#f5f5f5; padding:12px; border-radius:6px; }
+  </style>
+</head>
+<body>
+  <h1>Exercício ES6 — Filtrar Alunos (nota >= 6)</h1>
+  <button id="btn">Mostrar aprovados no console e na página</button>
+  <h3>Lista de aprovados:</h3>
+  <ul id="lista"></ul>
+  <script src="script.js"></script>
+  <script>
+    const btn = document.getElementById('btn');
+    const lista = document.getElementById('lista');
+
+    btn.addEventListener('click', () => {
+      const aprovados = window.getAprovados ? getAprovados(alunos) : [];
+      console.log('Aprovados (objetos):', aprovados);
+
+      lista.innerHTML = aprovados.map(a => `<li>${a.nome} — ${a.nota}</li>`).join('');
+    });
+
+    window.addEventListener('DOMContentLoaded', () => {
+      const aprovados = window.getAprovados ? getAprovados(alunos) : [];
+      lista.innerHTML = aprovados.map(a => `<li>${a.nome} — ${a.nota}</li>`).join('');
+    });
+  </script>
+</body>
+</html>
