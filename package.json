@@ -1,0 +1,26 @@
+{
+  "name": "curso-frontend-ebac",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "clean": "rm -rf dist || rmdir /s /q dist"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/washryan/curso-frontend-ebac.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/washryan/curso-frontend-ebac/issues"
+  },
+  "homepage": "https://github.com/washryan/curso-frontend-ebac#readme",
+  "devDependencies": {
+    "typescript": "^5.9.2"
+  }
+}
