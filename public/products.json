@@ -1,0 +1,20 @@
+[
+  {
+    "id": 1,
+    "nome": "T\u00eanis Runner",
+    "preco": 199.99,
+    "imagem": "/product1.png"
+  },
+  {
+    "id": 2,
+    "nome": "Camiseta Sport",
+    "preco": 59.9,
+    "imagem": "/product2.png"
+  },
+  {
+    "id": 3,
+    "nome": "Bola Oficial",
+    "preco": 129.5,
+    "imagem": "/product3.png"
+  }
+]
