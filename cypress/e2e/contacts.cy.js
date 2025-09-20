@@ -1,47 +1,41 @@
 /// <reference types="cypress" />
 
-describe('Testes de funcionalidades de Agenda de Contatos', () => {
-  beforeEach(() => {
-    cy.visit('https://ebac-agenda-contatos-tan.vercel.app')
-  })
-
-  //Testar funcionalidades: adição, edicão e remoção de contatos
-
-  //Adicionar novo contato
-  it('Deve adicionar novo contato', () => {
-    cy.get('input[type="text"]').type('Isabela Ramos')
-    cy.get('input[type="email"]').type('isabelaramos@teste.com')
-    cy.get('input[type="tel"]').type('11 912345678')
-    cy.get('.adicionar').click()
-
-    cy.contains('div.contato', 'Isabela Ramos').should('exist')
-    cy.contains('div.contato', 'isabelaramos@teste.com').should('exist')
-    cy.contains('div.contato', '11 912345678').should('exist')
-  })
-
-  //Editar informações de contato
-  it('Deve ativar modo de edição', () => {
-    cy.get(':nth-child(2) > .sc-gueYoa > .edit').click()
-    cy.get('[type="text"]').should('have.length.greaterThan', 0)
-  })
-
-  it('Deve alterar o primeiro contato selecionado', () => {
-    cy.get('.edit').last().click()
-  
-    //Alterar e-mail
-    cy.get('[type="email"]').clear()
-    cy.get('[type="email"]').type('isabela@teste.com')
-
-    //Alterar telefone
-    cy.get('[type="tel"]').clear()
-    cy.get('[type="tel"]').type('11 989765432')
-
-    //Salvar alterações
-    cy.get('.alterar').click()
-  })
-
-  //Deletar contato
-  it('Deve apagar o ultimo contato', () => {
-    cy.get('.delete').last().click()
-  })
-});
+    describe ('Teste de inclusão de contato', () => {
+        beforeEach(() => {
+            cy.visit('https://ebac-agenda-contatos-tan.vercel.app/');
+            })
+        it('Deve incluir um novo contato', () => {
+            cy.get('[type="text"]').type('Ryan Leal')
+            cy.wait(2000)
+            cy.get('[type="email"]').type('ryanleall@teste.com')
+            cy.wait(2000)
+            cy.get('[type="tel"]').type('11 999999999')
+            cy.wait(2000)
+            cy.get('.adicionar').click()
+            cy.wait(4000)
+            cy.screenshot('Deve incluir um novo contato')
+        });
+        it('Deve editar um contato', () => {
+            cy.wait(4000)
+            cy.get('.edit').first().click()
+            cy.wait(2000)
+            cy.get('[type="text"]').clear().type('Editado - Ryan Leal')
+            cy.wait(2000)
+            cy.get('[type="email"]').clear().type('editado-ryanleall@teste.com')
+            cy.wait(2000)
+            cy.get('[type="tel"]').clear().type('21 666666666')
+            cy.wait(2000)
+            cy.get('.alterar, button:contains("Salvar"), button:contains("Alterar"), button[type="submit"]')
+            .first()
+            .click()
+            cy.contains('Editado - Ryan Leal').should('be.visible')
+            cy.wait(4000)
+            cy.screenshot('Deve editar um contato')
+        });
+            it('Deve apagar um contato', () => {
+            cy.wait(6000)
+            cy.get('.delete').first().click()
+            cy.contains('Editado - Ryan Leal').should('not.exist')
+            cy.screenshot('Deve apagar um contato')
+        })
+    });
